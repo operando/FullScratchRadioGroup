@@ -30,4 +30,12 @@ public class FullScratchRadioGroup extends LinearLayout {
     public FullScratchRadioGroup(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
+    public void setOnCheckedChangeListener(OnCheckedChangeListener onCheckedChangeListener) {
+        this.onCheckedChangeListener = onCheckedChangeListener;
+    }
+
+
+    public interface OnCheckedChangeListener {
+        void onCheckedChanged(FullScratchRadioGroup fullScratchRadioGroup, @IdRes int checkedId);
+    }
 }
