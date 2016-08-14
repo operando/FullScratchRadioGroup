@@ -11,6 +11,12 @@ Android 6系のコードをBaseにフルスクラッチでRadioGroupとRadioButt
 * RadioButtonにidを振ってなくても各Buttonがそれぞれ別々のButtonとして認識されているのはどうやってるのか気になった
 
 
+## 主な実装
+
+* [FullScratchRadioGroup](https://github.com/operando/FullScratchRadioGroup/blob/master/app/src/main/java/com/os/operando/fullscratchradiogroup/widget/FullScratchRadioGroup.java)
+* [FullScratchRadioButton](https://github.com/operando/FullScratchRadioGroup/blob/master/app/src/main/java/com/os/operando/fullscratchradiogroup/widget/FullScratchRadioButton.java)
+
+
 ## Link
 
 * http://tools.oesf.biz/android-6.0.0_r1.0/xref/frameworks/base/core/java/android/widget/RadioGroup.java
