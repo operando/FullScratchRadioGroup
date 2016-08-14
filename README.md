@@ -8,7 +8,7 @@ Android 6系のコードをBaseにフルスクラッチでRadioGroupとRadioButt
 ## 動機、実装前に気になったこと
 
 
-### RadioGroupとRadioButtonみたいにRadioButtonにClickListenerみたいなの設定しなくても、親のListenerに通知が来るって実装はどうやってるのか気になった
+#### RadioGroupとRadioButtonみたいにRadioButtonにClickListenerみたいなの設定しなくても、親のListenerに通知が来るって実装はどうやってるのか気になった
 
 * ViewGroup.OnHierarchyChangeListenerを使ってる
  * Viewの階層に変更があると呼び出されることをうまく使ってる
@@ -22,11 +22,20 @@ Android 6系のコードをBaseにフルスクラッチでRadioGroupとRadioButt
  * hideだったので、FullScratchRadioButtonに同じように内部で使う用のListenerの口を用意してあげた
 
 
-### RadioButtonにidを振ってなくても各Buttonがそれぞれ別々のButtonとして認識されているのはどうやってるのか気になった
+#### RadioButtonにidを振ってなくても各Buttonがそれぞれ別々のButtonとして認識されているのはどうやってるのか気になった
 
 * viewにidが振られていなかったら[View.generateViewId](https://developer.android.com/reference/android/view/View.html#generateViewId%28%29) methodでViewのidを作成して、setIdしてる
 * View.generateViewId methodはAPI Level 17から追加されたもので、それ以下のバージョンでどう生成してたのか
 * → hashCode methodの戻り値をViewのidにしてた
+
+## 実装してみたわかったこと
+
+* 動的にViewのidを生成するなら[View.generateViewId](https://developer.android.com/reference/android/view/View.html#generateViewId%28%29)を使うのが良さそう
+* ViewGroup側で子Viewのクリックイベント等をハンドリングしたい場合に、ListenerをセットしてもいいがListenerが上書きされる危険性はある
+ * なので子ViewもCustom Viewにして別口のListenerを作る or setじゃなくてadd Listener的なものがあればそっちにセットするほうがいい
+ * 特にRadioGroupとRadioButtonみたいに親と子が密接に関連してるものは
+* 親と子が密接？に関連しているViewを作る場合のノウハウを学ぶのに最適だった
+* ViewGroup.OnHierarchyChangeListener使えばCustom GroupView作って色々できそう
 
 
 ## 主な実装
