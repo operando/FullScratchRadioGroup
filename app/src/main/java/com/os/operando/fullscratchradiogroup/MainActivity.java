@@ -1,11 +1,11 @@
-package com.os.operando.makeradiogroup;
+package com.os.operando.fullscratchradiogroup;
 
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.os.operando.makeradiogroup.widget.FullScratchRadioGroup;
+import com.os.operando.fullscratchradiogroup.widget.FullScratchRadioGroup;
 
 public class MainActivity extends AppCompatActivity {
 

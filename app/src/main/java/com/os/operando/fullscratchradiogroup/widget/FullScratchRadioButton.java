@@ -1,4 +1,4 @@
-package com.os.operando.makeradiogroup.widget;
+package com.os.operando.fullscratchradiogroup.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;

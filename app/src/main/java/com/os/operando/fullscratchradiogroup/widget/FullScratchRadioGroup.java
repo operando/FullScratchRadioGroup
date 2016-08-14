@@ -1,4 +1,4 @@
-package com.os.operando.makeradiogroup.widget;
+package com.os.operando.fullscratchradiogroup.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 
-import com.os.operando.makeradiogroup.R;
+import com.os.operando.fullscratchradiogroup.R;
 
 public class FullScratchRadioGroup extends LinearLayout {
 

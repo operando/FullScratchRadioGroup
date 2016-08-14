@@ -4,7 +4,7 @@ android {
     compileSdkVersion 24
     buildToolsVersion "24.0.1"
     defaultConfig {
-        applicationId "com.os.operando.makeradiogroup"
+        applicationId "com.os.operando.fullscratchradiogroup"
         minSdkVersion 7
         targetSdkVersion 24
         versionCode 1
