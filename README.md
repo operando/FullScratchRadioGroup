@@ -25,3 +25,6 @@ Android 6系のコードをBaseにフルスクラッチでRadioGroupとRadioButt
  * 後方互換のために読んだ
 * https://developer.android.com/reference/android/widget/RadioGroup.html
 * https://developer.android.com/reference/android/widget/RadioButton.html
+* [カスタムビューでタッチイベントを受け取れない問題](http://android-note.open-memo.net/sub/trouble__cannot_catch_touch_event.html)
+ * これが正しいかわからないが、FullScratchRadioButtonをタップしても全くタッチイベントが飛ばなくて仕方なくこれと同じような感じで実装した
+ * ちゃんと理由を知る必要がありそう
