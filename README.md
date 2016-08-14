@@ -7,8 +7,26 @@ Android 6系のコードをBaseにフルスクラッチでRadioGroupとRadioButt
 
 ## 動機、実装前に気になったこと
 
-* RadioGroupとRadioButtonみたいにRadioButtonにClickListenerみたいなの設定しなくても、親のListenerに通知が来るって実装はどうやってるのか気になった
-* RadioButtonにidを振ってなくても各Buttonがそれぞれ別々のButtonとして認識されているのはどうやってるのか気になった
+
+### RadioGroupとRadioButtonみたいにRadioButtonにClickListenerみたいなの設定しなくても、親のListenerに通知が来るって実装はどうやってるのか気になった
+
+* ViewGroup.OnHierarchyChangeListenerを使ってる
+ * Viewの階層に変更があると呼び出されることをうまく使ってる
+* ViewGroup.OnHierarchyChangeListenerのonChildViewAdded method内で追加されるRadioButtonに対して内部で作ったCompoundButton.OnCheckedChangeListenerを設定してる
+ * この内部で作ったOnCheckedChangeListenerのonCheckedChanged method内でRadioButtonのチェック状態やチェックしてるViewのidなどを変更している
+* 実際にはCompoundButton.setOnCheckedChangeWidgetListenerに設定してる
+ * hideのAPIなので普通には使えない
+ * http://tools.oesf.biz/android-6.0.0_r1.0/xref/frameworks/base/core/java/android/widget/CompoundButton.java#176
+ * なんで普通のsetOnCheckedChangeListener使わないのかは、内部で設定してるListenerが上書きされると正常に動作しなくなるからだと思われる
+ * javadocにも「This callback is used for internal purpose only.」って書いてあるからやっぱり内部実装用のListenerってことになる
+ * hideだったので、FullScratchRadioButtonに同じように内部で使う用のListenerの口を用意してあげた
+
+
+### RadioButtonにidを振ってなくても各Buttonがそれぞれ別々のButtonとして認識されているのはどうやってるのか気になった
+
+* viewにidが振られていなかったら[View.generateViewId](https://developer.android.com/reference/android/view/View.html#generateViewId%28%29) methodでViewのidを作成して、setIdしてる
+* View.generateViewId methodはAPI Level 17から追加されたもので、それ以下のバージョンでどう生成してたのか
+* → hashCode methodの戻り値をViewのidにしてた
 
 
 ## 主な実装
